@@ -14,4 +14,8 @@ class Patient extends Model
         return "/patient/" . $this->id;
     }
 
+    public function associatedUser() {
+        return $this->hasOne(User::class);
+    }
+
 }

@@ -18,4 +18,8 @@ class Doctor extends Model
     public function hospitals(){
         return $this->belongsToMany(Hospital::class);
     }
+
+    public function associatedUser() {
+        return $this->hasOne(User::class);
+    }
 }

@@ -15,6 +15,7 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("user_id");        
             $table->string("name");
             $table->string("speciality");
             $table->string("seniority");

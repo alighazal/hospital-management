@@ -4,6 +4,9 @@ use App\Http\Controllers\hospitalController;
 use App\Http\Controllers\doctorController;
 use App\Http\Controllers\hospitalDoctorsController;
 use App\Http\Controllers\patientController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +23,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register', [  RegisterController::class, 'index' ] );
+Route::post('/register', [  RegisterController::class, 'store' ] );
+
+Route::get('/login', [  LoginController::class, 'index' ] );
+Route::post('/login', [  LoginController::class, 'store' ] );
+
+Route::post('/logout', [  LogoutController::class ] );
+
 
 Route::post('/hospital', [hospitalController::class, 'store']);
 Route::delete('/hospital/{hospital}', [hospitalController::class, 'destroy']);
