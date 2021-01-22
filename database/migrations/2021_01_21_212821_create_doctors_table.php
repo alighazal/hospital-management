@@ -14,14 +14,13 @@ class CreateDoctorsTable extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger("user_id");        
-            $table->string("name");
-            $table->string("speciality");
-            $table->string("seniority");
-            $table->string("alma_mater");
-            $table->timestamp("dob");
-            $table->timestamp("graduation_date");
+            $table->string("name")->nullable();  
+            $table->string("speciality")->nullable();  
+            $table->string("seniority")->nullable();  
+            $table->string("alma_mater")->nullable();  
+            $table->timestamp("dob")->nullable();  
+            $table->timestamp("graduation_date")->nullable();  
             $table->timestamps();
         });
     }

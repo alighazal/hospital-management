@@ -32,6 +32,7 @@ class DoctorsTest extends TestCase
         $created_doctor = Doctor::first();
 
         /** TODO check each field */
+
         $response->assertRedirect($created_doctor->path());
     }
 

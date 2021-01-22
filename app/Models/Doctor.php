@@ -12,14 +12,11 @@ class Doctor extends Model
     protected $guarded = [];
 
     public function path() {
-        return '/doctor/' . $this->id;
+        return '/doctor/' . $this->user_id;
     }
 
-    public function hospitals(){
-        return $this->belongsToMany(Hospital::class);
+    public function user() {
+        return $this->hasOne(User::class, "id", "user_id" );
     }
 
-    public function associatedUser() {
-        return $this->hasOne(User::class);
-    }
 }
