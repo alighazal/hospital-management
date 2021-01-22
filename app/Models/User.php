@@ -20,9 +20,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
-    
+    const UserRole = [
+        'Doctor' => 0 ,
+        'Patient' => 1 ,
+        'HospitalAdmin' => 2 ,
+        'Other' => 3
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -42,4 +48,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 }

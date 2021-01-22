@@ -14,7 +14,7 @@ class LoginController extends Controller
 
     public function index () {
 
-        return view('auth.login');
+        return view('Auth.login');
     }
 
     public function store (Request $request) {
@@ -23,6 +23,8 @@ class LoginController extends Controller
             "email" => "required|email",
             "password" => "required"
         ]);
+
+        
 
         if (!Auth::attempt($request->only('email', 'password'), $request->remember) ){
             return back()->with('status', 'invalid credintials');

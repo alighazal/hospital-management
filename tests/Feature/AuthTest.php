@@ -25,6 +25,7 @@ class AuthTest extends TestCase
 
     /** @test */
     public function can_register(){
+        
         $this->withoutExceptionHandling();
 
 
@@ -57,6 +58,8 @@ class AuthTest extends TestCase
         $response->assertSessionHasErrors('email');
 
     }
+
+    /** @test */
 
     
 
