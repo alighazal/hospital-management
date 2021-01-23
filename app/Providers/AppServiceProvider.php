@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +27,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Blade::if('doctor', function () {
+            return (Auth::user()->role == User::UserRole['Doctor']);
+        });
+        Blade::if('patient', function () {
+            return (Auth::user()->role == User::UserRole['Patient']);
+        });
+        Blade::if('hospital_admin', function () {
+            return (Auth::user()->role == User::UserRole['HospitalAdmin']);
+        });
     }
 }
