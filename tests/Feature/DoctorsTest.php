@@ -43,6 +43,7 @@ class DoctorsTest extends TestCase
         $this->withoutExceptionHandling();
 
         $doctor = [
+            "user_id" => 1,
             "name" => "Ali Ghazal",
             "dob" => "17/12/1999",
             "speciality" => "GP",
@@ -54,6 +55,7 @@ class DoctorsTest extends TestCase
         $doctor = Doctor::create($doctor);
 
         $new_doctor = [
+            "user_id" => 1,
             "name" => "Ali Ghazal",
             "dob" => "17/12/1999",
             "speciality" => "GP",

@@ -33,6 +33,7 @@ class RolesTest extends TestCase
             "role" => User::UserRole['Doctor']
         ];
 
+
         $this->post('/register', $user);
 
         $this->assertCount(1, Doctor::all());
