@@ -28,6 +28,7 @@ class RegisterController extends Controller
     public function store (Request $request) {
 
         
+        
         $this->validate($request, [
             "name"      => "required|max:255",
             "email"     => "required|max:255|email",
@@ -44,22 +45,27 @@ class RegisterController extends Controller
             "role"      =>  $request->role   
         ]);
 
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+
+        
         if ($user->role == User::UserRole['Patient']){
             Patient::create([
                 "user_id" => $user->id,
                 "name" => $user->name
             ]);
         } else if ($user->role == User::UserRole['Doctor']){
+
+            //dd($user);
             Doctor::create([
                 "user_id" => $user->id,
                 "name" => $user->name
             ]);
+            return redirect('/doctor/create');
         } else if (($user->role == User::UserRole['HospitalAdmin'])){
             // TODO
         }
 
-        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-
+     
         return back();    
 
     }
