@@ -11,6 +11,9 @@ class Doctor extends Model
 
     protected $guarded = [];
 
+    protected $primaryKey = 'user_id';
+    public $incrementing = false;
+
     public function path() {
         return '/doctor/' . $this->user_id;
     }

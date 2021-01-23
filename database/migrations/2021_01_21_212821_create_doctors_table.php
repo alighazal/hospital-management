@@ -22,6 +22,8 @@ class CreateDoctorsTable extends Migration
             $table->timestamp("dob")->nullable();  
             $table->timestamp("graduation_date")->nullable();  
             $table->timestamps();
+
+            $table->primary(['user_id']);
         });
     }
 
