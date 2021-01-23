@@ -14,21 +14,28 @@
     </head>
     <body>
     <nav>
-        <div class = "flex bg-red-100 justify-between pr-6 pl-6 pt-3 pb-3">
-            <div  class = "flex flex-row" >
-                <div class = "mr-4">home</div>
-                <div class = "mr-4">hospitals</div>
-                <div class = "mr-4">doctors</div>
-                <div class = "mr-4">Reservation</div>
-            </div>
-            <div class = "flex flex-row" >
-                <div class = "ml-4">User Name</div>
-                <div class = "ml-4">login</div>
-                <div class = "ml-4">logout</div>
-                <div class = "ml-4">register</div>
-            </div>
+        <ul class = "flex bg-red-100 justify-between pr-6 pl-6 pt-3 pb-3">
+            <ul  class = "flex flex-row" >
+                <li class = "mr-4"><a href="/"> home </a></li>
+                <li class = "mr-4"><a href="/hospitals"> hospitals</a></li>
+                <li class = "mr-4"><a href="/doctor"> doctors</a></li>
+                <li class = "mr-4"><a href="/reservations"> Reservation</a></li>
+            </ul>
+            <ul class = "flex flex-row" >
+            @auth
+                <li class = "ml-4"><a href="/profile"> {{Auth::user()->name}}</a></li>
+                <form action="/logout" method = "post">
+                    @csrf
+                    <button class = "ml-4"> logout </button>
+                </form>
+            @else
+                <li class = "ml-4"><a href="/login"> login</a></li>
+                <li class = "ml-4"><a href="/register"> register</a></li>
+            @endauth
+          
+            </ul>
         
-        </div>
+        </ul>
     </nav>
 
     @yield('content')
