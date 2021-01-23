@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/register', [  RegisterController::class, 'index' ] );
 Route::post('/register', [  RegisterController::class, 'store' ] );
@@ -30,16 +30,17 @@ Route::post('/register', [  RegisterController::class, 'store' ] );
 Route::get('/login', [  LoginController::class, 'index' ] );
 Route::post('/login', [  LoginController::class, 'store' ] );
 
-Route::post('/logout', [  LogoutController::class ] );
+Route::post('/logout', LogoutController::class );
 
 
 Route::post('/hospital', [hospitalController::class, 'store']);
 Route::delete('/hospital/{hospital}', [hospitalController::class, 'destroy']);
 Route::patch('/hospital/{hospital}', [hospitalController::class, 'update']);
 
+Route::get('/doctor/create', [doctorController::class, 'create']);
 Route::post('/doctor', [doctorController::class, 'store']);
 Route::delete('/doctor/{doctor}', [doctorController::class, 'destroy']);
-Route::patch('/doctor/{doctor}', [doctorController::class, 'update']);
+Route::patch('/doctor/{id}', [doctorController::class, 'update'])->name('doctor.update');
 
 Route::post('/hospital/{hospital}/doctors', [hospitalDoctorsController::class, 'store']);
 Route::delete('/hospital/{hospital}/doctors/{doctor}', [hospitalDoctorsController::class, 'destroy']);
