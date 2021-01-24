@@ -14,7 +14,7 @@ class Patient extends Model
     public $incrementing = false;
 
     public function path(){
-        return "/patient/" . $this->id;
+        return "/patient/". $this->user_id;
     }
 
     public function associatedUser() {
