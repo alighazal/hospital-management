@@ -42,7 +42,7 @@ class HospitalTest extends TestCase
         $this->assertEquals($created_hospital["type"], 'private');
         $this->assertEquals($created_hospital["founding_date"], '1/1/1950');
 
-        $response->assertRedirect($created_hospital->path());
+        $response->assertRedirect('/');
 
     }
 
@@ -119,6 +119,7 @@ class HospitalTest extends TestCase
         ]);
 
         $doctor = Doctor::create([
+            "user_id" => 1,
             "name" => "Ali Ghazal",
             "dob" => "17/12/1999",
             "speciality" => "GP",
@@ -127,7 +128,7 @@ class HospitalTest extends TestCase
             "alma_mater" => "cairo university"
         ]);
 
-        $this->post($hospital->path() . '/doctors/' ,  ["doctor_id" => $doctor->id ]);
+        $this->post($hospital->path() . '/doctors/' ,  ["doctor_id" => $doctor->user_id ]);
 
         $this->assertEquals(1, $hospital->doctors()->count() );
 
@@ -147,6 +148,7 @@ class HospitalTest extends TestCase
         ]);
 
         $doctor = Doctor::create([
+            "user_id" => 1,
             "name" => "Ali Ghazal",
             "dob" => "17/12/1999",
             "speciality" => "GP",
@@ -155,10 +157,10 @@ class HospitalTest extends TestCase
             "alma_mater" => "cairo university"
         ]);
 
-        $this->post($hospital->path() . '/doctors/' ,  ["doctor_id" => $doctor->id ]);
+        $this->post($hospital->path() . '/doctors/' ,  ["doctor_id" => $doctor->user_id ]);
         $this->assertEquals(1, $hospital->doctors()->count() );
 
-        $this->delete($hospital->path() . '/doctors/' . $doctor->id );
+        $this->delete($hospital->path() . '/doctors/' . $doctor->user_id );
         $this->assertEquals(0, $hospital->doctors()->count() );
 
 

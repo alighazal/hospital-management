@@ -33,7 +33,7 @@ class DoctorsTest extends TestCase
 
         /** TODO check each field */
 
-        $response->assertRedirect($created_doctor->path());
+        $response->assertRedirect('/');
     }
 
 
@@ -71,7 +71,7 @@ class DoctorsTest extends TestCase
         $this->assertEquals($doctor['seniority'],  "senior");
         $this->assertEquals($doctor['alma_mater'],  "alexandria university");
 
-        $response->assertRedirect($doctor->path());
+        $response->assertRedirect('/');
 
     }
 
@@ -81,6 +81,7 @@ class DoctorsTest extends TestCase
         $this->withoutExceptionHandling();
 
         $doctor = [
+            "user_id" => 1,
             "name" => "Ali Ghazal",
             "dob" => "17/12/1999",
             "speciality" => "GP",
@@ -90,10 +91,13 @@ class DoctorsTest extends TestCase
         ];
 
         $doctor = Doctor::create($doctor);
+       // dump( Doctor::all()->count());
 
         $this->assertCount(1, Doctor::all());
 
         $response = $this->delete($doctor->path());
+
+        //dd( Doctor::all()->count());
 
         $this->assertCount(0, Doctor::all());
 

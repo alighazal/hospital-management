@@ -36,7 +36,8 @@ class AuthTest extends TestCase
             "email"     => "test@test.com",
             "username"  => "tt",
             "password"  => "password",
-            "password_confirmation" => "password"
+            "password_confirmation" => "password",
+            "role" => 0
         ]);
 
 
