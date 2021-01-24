@@ -15,7 +15,7 @@ class DoctorHospital extends Migration
     {
         Schema::create('doctor_hospital', function (Blueprint $table) {
             $table->unsignedBigInteger("hospital_id");
-            $table->unsignedBigInteger("doctor_id");
+            $table->unsignedBigInteger("doctor_user_id");
             $table->timestamps();
         });
     }
