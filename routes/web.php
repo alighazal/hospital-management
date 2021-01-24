@@ -7,6 +7,7 @@ use App\Http\Controllers\patientController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,15 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
+Route::get('/profile', function () {
+   dd(Auth::user());
+});
+
+Route::get('/hospital/admin/only', function () {
+    dd('Hello Dear Admin');
+ })->middleware('hospital_admin');
+
 Route::get('/register', [  RegisterController::class, 'index' ] );
 Route::post('/register', [  RegisterController::class, 'store' ] );
 
@@ -40,12 +50,15 @@ Route::get('/login/google/redirect', [  LoginController::class, 'googleRedirect'
 Route::post('/logout', LogoutController::class );
 
 
-Route::post('/hospital', [hospitalController::class, 'store']);
+Route::get('/hospital/create', [hospitalController::class, 'create']);
+Route::post('/hospital', [hospitalController::class, 'store']); 
+Route::get('/hospital', [hospitalController::class, 'index']); 
 Route::delete('/hospital/{hospital}', [hospitalController::class, 'destroy']);
 Route::patch('/hospital/{hospital}', [hospitalController::class, 'update']);
 
-Route::get('/doctor/create', [doctorController::class, 'create']);
+Route::get('/doctor', [doctorController::class, 'index']);
 Route::post('/doctor', [doctorController::class, 'store']);
+Route::get('/doctor/create', [doctorController::class, 'create']);
 Route::delete('/doctor/{doctor}', [doctorController::class, 'destroy']);
 Route::patch('/doctor/{id}', [doctorController::class, 'update'])->name('doctor.update');
 
