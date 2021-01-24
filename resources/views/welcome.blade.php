@@ -22,20 +22,22 @@
                     @hospital_admin
                         You are a Hospital Admin
                     @endhospital_admin
+                </div>
                 
                 @else 
-                    Welcome
+                <div class = "text-4xl"> Welcome </div>
                 @endauth
-                </div>
+
                 @auth
-                    @hospital_admin
-                    <form method = "get" action = "hospital/create">
-                        <div class = " flex justify-center">
-                            <button type = "submit" class = "bg-red-500 text-white px-2 py-2 
-                            rounded-lg font-medium w-3/12 mt-6"> Add Hospital </button>
-                        </div>
-                    </form>
-                    @endhospital_admin
+                
+                @hospital_admin
+                <form method = "get" action = "hospital/create">
+                    <div class = " flex justify-center">
+                        <button type = "submit" class = "bg-red-500 text-white px-2 py-2 
+                        rounded-lg font-medium w-3/12 mt-6"> Add Hospital </button>
+                    </div>
+                </form>
+                @endhospital_admin
                 @endauth
           
         </div>

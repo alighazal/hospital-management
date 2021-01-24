@@ -16,7 +16,7 @@
                             <div>  {{$doctor->name}} </div>
                         </div>
                         <!-- add reservation func -->
-                        <div class = "flex ">
+                        <div>
                             <form >
                                 <div class = "mr-2">
                                     <button type = "submit"  
@@ -27,6 +27,7 @@
                                     @endguest> Reserve </button>
                                 </div>
                             </form>
+                            @auth
                             @hospital_admin
                             <form>
                                 <div class = "mr-2">
@@ -35,8 +36,9 @@
                                     > Hire </button>
                                 </div>
                             </form>
+                            @endhospital_admin
+                            @endauth
                         </div>
-                        @endhospital_admin
                     </div>
                     <div class = "border-b-2 border-black mb-2"></div>
                 @endforeach
