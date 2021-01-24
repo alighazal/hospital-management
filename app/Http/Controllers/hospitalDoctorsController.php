@@ -11,11 +11,12 @@ class hospitalDoctorsController extends Controller
     //
     public function store(Hospital $hospital)
     {
+        //dd(request());
         $hospital->doctors()->attach(request("doctor_id"));    
     }
 
     public function destroy(Hospital $hospital, Doctor $doctor)
     {
-        $hospital->doctors()->detach($doctor->id);    
+        $hospital->doctors()->detach($doctor->user_id);    
     }
 }

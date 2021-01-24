@@ -9,6 +9,7 @@ class patientController extends Controller
 {
     public function store(){   
         $patient =  Patient::create($this->dataValidator());       
+        //dd($patient->path());
         return redirect($patient->path());
     }
 
@@ -24,6 +25,7 @@ class patientController extends Controller
 
     private function dataValidator(){
         return request()->validate([
+            "user_id" => "required",
             "name" => "required",
             "dob" => "required"
         ]);

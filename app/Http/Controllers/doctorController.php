@@ -10,6 +10,13 @@ class doctorController extends Controller
 {
     //
 
+    public function index() {
+        $doctors = Doctor::latest()->paginate(25);
+        return view('indices.doctors', [
+            'doctors' => $doctors
+        ]);
+    }
+
     public function create() {
 
         $user = Auth::user();
