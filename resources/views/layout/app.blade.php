@@ -17,7 +17,7 @@
         <ul class = "flex bg-red-100 justify-between pr-6 pl-6 pt-3 pb-3">
             <ul  class = "flex flex-row" >
                 <li class = "mr-4"><a href="/"> home </a></li>
-                <li class = "mr-4"><a href="/hospitals"> hospitals</a></li>
+                <li class = "mr-4"><a href="/hospital"> hospitals</a></li>
                 <li class = "mr-4"><a href="/doctor"> doctors</a></li>
                 <li class = "mr-4"><a href="/reservations"> Reservation</a></li>
             </ul>
