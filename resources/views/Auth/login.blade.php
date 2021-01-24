@@ -7,9 +7,34 @@
 @section('content')
     
     <div class = "flex justify-center" >
-
         <div class = "w-4/12 bg-white p-6 rounded-lg" >
             <div class = " flex mb-4 font-bold text-4xl justify-center "> Login</div>
+            <form method = "get" action = "/login/github">
+                <div class = "flex-column  justify-center">
+                    <button type = "submit" class = "bg-gray-500 text-white px-4 py-3 
+                    rounded-lg font-medium w-full"> Github </button>
+                </div>
+            </form>
+
+            <form method = "get" action = "/login/google">
+                <div class = "flex-column  justify-center">
+                    <button type = "submit" class = "bg-red-500 text-white px-4 py-3 
+                    rounded-lg font-medium w-full mt-2"> Google </button>
+                  
+                </div>
+            </form>
+
+            @if (session('domain'))
+                <div class = "text-red-500 mt-2 text-small text-center">
+                    {{ session('domain') }}
+                </div>
+            @endif
+
+
+            <div class = "flex justify-center" >
+                    <div class = "m-4"> OR </div>
+            </div>
+
 
             <form action="/login"  method = "post" >
                 @csrf 
@@ -18,8 +43,7 @@
                     <div class = "bg-red-500 p-4 rounded-lg text-white text-center mb-3">
                         {{session('status')}}
                     </div>
-                @endif
-                
+                @endif         
 
                 <div class = "mb-4">
                     <label for="email" class= "sr-only" > Email</label>

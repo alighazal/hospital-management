@@ -30,6 +30,13 @@ Route::post('/register', [  RegisterController::class, 'store' ] );
 Route::get('/login', [  LoginController::class, 'index' ] );
 Route::post('/login', [  LoginController::class, 'store' ] );
 
+Route::get('/login/github', [  LoginController::class, 'github' ] );
+Route::get('/login/github/redirect', [  LoginController::class, 'githubRedirect' ] );
+
+Route::get('/login/google', [  LoginController::class, 'google' ] );
+Route::get('/login/google/redirect', [  LoginController::class, 'googleRedirect' ] );
+
+
 Route::post('/logout', LogoutController::class );
 
 
